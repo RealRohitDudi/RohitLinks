@@ -1,0 +1,48 @@
+# Node.js
+node_modules/
+
+# Build output
+.next/
+out/
+dist/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Misc
+*.zip
+*.tar.gz
+*.tgz
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Coverage
+coverage/
+
+# Others
+*.log
+*.tmp
+*.bak
+
+# Ignore lock files except pnpm
+package-lock.json
+yarn.lock
+
+# Ignore public uploads
+public/uploads/
