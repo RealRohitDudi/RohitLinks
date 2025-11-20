@@ -20,30 +20,14 @@ export function ProfileHeader({
                     <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full blur-lg opacity-60 animate-pulse"></div>
                     <div className="relative w-full h-full rounded-full bg-gradient-to-br from-cyan-400 to-purple-600 p-1 flex items-center justify-center shadow-2xl border-2 border-cyan-400 hover:border-purple-400 transition-colors duration-500">
                         <div className="w-full h-full rounded-full bg-background flex items-center justify-center overflow-hidden">
-                            {profile.profileImage ? (
-                                <picture>
-                                    <source
-                                        srcSet={profile.profileImage.replace(
-                                            /\.(jpg|png)$/i,
-                                            ".webp"
-                                        )}
-                                        type="image/webp"
-                                    />
-                                    <Image
-                                        src={profile.profileImage}
-                                        alt={`${profile.name}'s profile picture`}
-                                        width={128}
-                                        height={128}
-                                        className="w-full h-full rounded-full object-cover shadow-lg shadow-cyan-400/30"
-                                        loading="lazy"
-                                        priority
-                                    />
-                                </picture>
-                            ) : (
-                                <div className="text-4xl sm:text-5xl font-bold bg-gradient-to-br from-cyan-400 to-purple-600 bg-clip-text text-transparent">
-                                    {profile.name.charAt(0).toUpperCase()}
-                                </div>
-                            )}
+                            <Image
+                                src={require("@/public/header_profile.png")}
+                                alt={`${profile.name}'s profile picture`}
+                                width={128}
+                                height={128}
+                                className="w-full h-full rounded-full object-cover shadow-lg shadow-cyan-400/30"
+                                priority
+                            />
                         </div>
                     </div>
                 </div>
@@ -59,16 +43,19 @@ export function ProfileHeader({
                 {profile.bio}
             </p>
 
-            {/* Social Icon Bar */}
-            <div className="flex justify-center gap-1.5 sm:gap-2.5 md:gap-4 mb-4 flex-wrap">
-                {/* Futuristic, clickable, mobile-optimized social buttons using Lucide icons */}
+            {/* Social Icon Bar - Clean UI */}
+            <div
+                className="flex justify-center gap-6 mb-6 flex-wrap px-4 py-2 border-2 border-cyan-400 rounded-full bg-black/80"
+                style={{ maxWidth: "700px", margin: "0 auto" }}
+            >
                 {[
-                    { href: "https://www.youtube.com/@RealRohitDudi" },
+                    { href: "https://www.github.com/RealRohitDudi" },
                     { href: "https://x.com/RealRohitDudi" },
+                    { href: "https://www.youtube.com/@RealRohitDudi" },
                     { href: "https://www.linkedin.com/in/RealRohitDudi" },
                     { href: "https://www.instagram.com/realrohitdudi" },
-                    { href: "https://www.github.com/RealRohitDudi" },
                     { href: "https://www.facebook.com/RealRohitDudi" },
+                    { href: "https://in.pinterest.com/RealRohitDudi/" },
                 ].map(({ href }) => {
                     const iconKey = getIconForUrl(href);
                     return (
@@ -81,30 +68,16 @@ export function ProfileHeader({
                                 iconKey.charAt(0).toUpperCase() +
                                 iconKey.slice(1)
                             }
-                            className="group p-2 sm:p-2.5 md:p-3 rounded-full bg-gradient-to-br from-cyan-500/50 to-purple-600/50 border-2 border-primary/40 hover:border-primary focus:border-primary focus:scale-105 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-all duration-150 text-primary shadow-lg shadow-cyan-400/20 hover:shadow-purple-400/30 backdrop-blur-md"
-                            style={{
-                                touchAction: "manipulation",
-                                minWidth: 40,
-                                minHeight: 40,
-                            }}
+                            className="flex items-center justify-center w-14 h-14 rounded-full border-2 border-white hover:border-cyan-400 transition-colors duration-200 bg-black"
+                            style={{ boxShadow: "0 0 0 2px #00d9ff" }}
                         >
-                            <span className="glow stars float drop-shadow-md">
+                            <span className="text-white text-3xl">
                                 {ICON_MAP[iconKey]}
                             </span>
                         </a>
                     );
                 })}
             </div>
-
-            {isPreview && (
-                <div
-                    className="inline-block px-4 py-2 bg-yellow-500/20 border border-yellow-500 text-yellow-300 rounded-lg text-sm font-medium animate-pulse"
-                    role="status"
-                    aria-live="polite"
-                >
-                    Preview Mode
-                </div>
-            )}
         </div>
     );
 }
